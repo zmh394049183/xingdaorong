@@ -2,25 +2,38 @@ import fs from "fs";
 import path from "path";
 import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
+import dts from "rollup-plugin-dts";
 import { fileURLToPath } from "url";
+import { rollupDelete } from "./plugins/delete";
 const __dirnameNew = path.dirname(fileURLToPath(import.meta.url));
 const packagesDir = path.resolve(__dirnameNew, "packages");
 const packageFiles = fs.readdirSync(packagesDir);
-
-console.log("[ process.env. ] >", process.env.PKG);
 function output(path: string) {
+  const prePath = `./packages/${path}`;
+  const distPath = `${prePath}/dist`;
+  const input = [`${prePath}/src/index.ts`];
   return [
     {
-      input: [`./packages/${path}/src/index.ts`],
+      input,
       output: [
         {
-          file: `./packages/${path}/dist/index.js`,
-          format: "umd",
-          sourcemap: true,
-          name: path,
+          file: `${distPath}/index.mjs`,
+          format: "esm",
+        },
+        {
+          file: `${distPath}/index.cjs`,
+          format: "cjs",
         },
       ],
-      plugins: [typescript({}), terser()],
+      plugins: [typescript({}), terser(), rollupDelete(`${distPath}`)],
+    },
+    {
+      input,
+      plugins: [dts()],
+      output: {
+        format: "esm",
+        file: `${prePath}/dist/index.d.ts`,
+      },
     },
   ];
 }
