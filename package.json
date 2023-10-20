@@ -19,7 +19,6 @@
     "@rollup/plugin-typescript": "^11.1.5",
     "@types/node": "^20.8.6",
     "rollup": "^4.1.4",
-    "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-typescript2": "^0.36.0",
     "typescript": "^5.2.2"
   }
