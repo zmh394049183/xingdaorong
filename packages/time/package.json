@@ -1,6 +1,6 @@
 {
-  "name": "@gouan/time",
-  "version": "1.0.0",
+  "name": "@xingdaorong/time",
+  "version": "1.0.2",
   "description": "",
   "type": "module",
   "main": "./dist/index.cjs",
