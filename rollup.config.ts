@@ -1,17 +1,21 @@
 import fs from "fs";
 import path from "path";
 import typescript from "@rollup/plugin-typescript";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
 import terser from "@rollup/plugin-terser";
-import { fileURLToPath } from "url";
-import { rollupDelete } from "./src/plugins/delete";
-const __dirnameNew = path.dirname(fileURLToPath(import.meta.url));
-const packagesDir = path.resolve(__dirnameNew, "packages");
-const packageFiles = fs.readdirSync(packagesDir);
+import { dts } from "rollup-plugin-dts";
+import { clean } from "./src/utils";
+const prePath = path.resolve(__dirname, "packages");
+const packageFiles = fs.readdirSync(prePath);
+const list = process.env.PKG
+  ? [process.env.PKG]
+  : packageFiles.filter((item) => item != ".DS_Store");
+clean(list.map((item) => `${prePath}/${item}/dist`));
 function output(npath: string) {
   const prePath = `./packages/${npath}`;
   const distPath = `${prePath}/dist`;
   const input = [`${prePath}/src/index.ts`];
-
   return [
     {
       input,
@@ -25,24 +29,17 @@ function output(npath: string) {
           format: "cjs",
         },
       ],
-      plugins: [
-        rollupDelete(`${distPath}`),
-        typescript({
-          declarationDir: `${distPath}/`,
-          declaration: true,
-          baseUrl: `${prePath}/`,
-          include: [`${prePath}/**/*.ts`],
-        }),
-
-        terser(),
-      ],
+      plugins: [resolve(), typescript({}), commonjs(), terser()],
+    },
+    {
+      input,
+      plugins: [dts()],
+      output: {
+        format: "esm",
+        file: `${prePath}/dist/index.d.ts`,
+      },
     },
   ];
 }
 
-export default [
-  ...(process.env.PKG ? [process.env.PKG] : packageFiles)
-    .filter((item) => item != ".DS_Store")
-    .map((path) => output(path))
-    .flat(),
-] as any[];
+export default [...list.map((path) => output(path)).flat()] as any[];

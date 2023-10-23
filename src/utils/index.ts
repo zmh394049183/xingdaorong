@@ -12,3 +12,8 @@ export function deleteFolder(path: string) {
     fs.rmdirSync(path);
   }
 }
+export function clean(arr: string[]) {
+  arr.forEach((item) => {
+    deleteFolder(item);
+  });
+}

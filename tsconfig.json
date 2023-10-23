@@ -10,5 +10,6 @@
     "esModuleInterop": true,
     "baseUrl": "./"
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "include": ["rollup.config.ts", "src/**/*.ts", "packages/**/*.ts", "src/utils/clean.js"]
 }
