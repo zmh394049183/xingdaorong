@@ -6,12 +6,11 @@
   "scripts": {
     "changeset": "changeset",
     "packages-version": "changeset version",
-    "clean": "node ./src/utils/clean.js",
     "publish": "changeset publish --registry=https://registry.npmjs.com/",
     "build": "rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript --bundleConfigAsCjs",
     "childBuild": "pnpm run build --environment PKG:time2"
   },
-  "keywords": [], 
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
