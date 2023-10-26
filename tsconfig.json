@@ -8,8 +8,14 @@
     "sourceMap": false,
     "noUnusedLocals": true,
     "esModuleInterop": true,
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "noImplicitThis": false
   },
   "exclude": ["node_modules"],
-  "include": ["rollup.config.ts", "src/**/*.ts", "packages/**/*.ts", "src/utils/clean.js"]
+  "include": [
+    "rollup.config.ts",
+    "src/**/*.ts",
+    "packages/**/*.ts",
+    "src/utils/clean.js"
+  ]
 }
