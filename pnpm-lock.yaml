@@ -25,12 +25,18 @@ importers:
       '@types/node':
         specifier: ^20.8.6
         version: 20.8.6
+      prettier:
+        specifier: ^3.0.3
+        version: 3.0.3
       rollup:
         specifier: ^4.1.4
         version: 4.1.4
       rollup-plugin-dts:
         specifier: ^6.1.0
         version: 6.1.0(rollup@4.1.4)(typescript@5.2.2)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
 
   packages/time: {}
 
@@ -1709,6 +1715,12 @@ packages:
   /prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
+
+  /prettier@3.0.3:
+    resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 

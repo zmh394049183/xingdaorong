@@ -1,16 +1,16 @@
-import fs from "fs";
-import path from "path";
-import typescript from "@rollup/plugin-typescript";
-import resolve from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
-import terser from "@rollup/plugin-terser";
-import { dts } from "rollup-plugin-dts";
-import { clean } from "./src/utils";
-const prePath = path.resolve(__dirname, "packages");
+import fs from 'fs';
+import path from 'path';
+import typescript from '@rollup/plugin-typescript';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import terser from '@rollup/plugin-terser';
+import { dts } from 'rollup-plugin-dts';
+import { clean } from './src/utils';
+const prePath = path.resolve(__dirname, 'packages');
 const packageFiles = fs.readdirSync(prePath);
 const list = process.env.PKG
   ? [process.env.PKG]
-  : packageFiles.filter((item) => item != ".DS_Store");
+  : packageFiles.filter((item) => item != '.DS_Store');
 clean(list.map((item) => `${prePath}/${item}/dist`));
 function output(npath: string) {
   const prePath = `./packages/${npath}`;
@@ -22,11 +22,11 @@ function output(npath: string) {
       output: [
         {
           file: `${distPath}/index.mjs`,
-          format: "esm",
+          format: 'esm',
         },
         {
           file: `${distPath}/index.cjs`,
-          format: "cjs",
+          format: 'cjs',
         },
       ],
       plugins: [resolve(), typescript({}), commonjs(), terser()],
@@ -35,7 +35,7 @@ function output(npath: string) {
       input,
       plugins: [dts()],
       output: {
-        format: "esm",
+        format: 'esm',
         file: `${prePath}/dist/index.d.ts`,
       },
     },
