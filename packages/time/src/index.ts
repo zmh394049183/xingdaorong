@@ -13,18 +13,18 @@ export const formatTimeView = (
 ) => {
   const diff = now - timestamp;
   const date = new Date(timestamp);
-  let getMinutes = (date.getMinutes() + '').padStart(2, '0');
-  let getHours = (date.getHours() + '').padStart(2, '0');
+  const getMinutes = `${date.getMinutes()}`.padStart(2, '0');
+  const getHours = `${date.getHours()}`.padStart(2, '0');
   const timeStr = `${getHours}:${getMinutes}`;
   if (isYesterday(timestamp, now)) {
     return `昨天 ${timeStr}`;
   } else if (diff < 60 * 1000) {
     return '刚刚';
   } else if (diff < 60 * 60 * 1000) {
-    return Math.floor(diff / (60 * 1000)) + '分钟前';
+    return `${Math.floor(diff / (60 * 1000))}分钟前`;
   } else if (diff < 24 * 60 * 60 * 1000) {
     return timeStr;
   } else {
-    return date.getMonth() + 1 + '月' + date.getDate() + '日';
+    return `${date.getMonth() + 1}月${date.getDate()}日`;
   }
 };

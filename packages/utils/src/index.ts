@@ -14,18 +14,19 @@ function debounce<T extends (...args: any[]) => any>(
   };
 }
 
-function throttle(func: Function, wait: number): () => void {
+function throttle(func: (...rest: any[]) => void, wait: number): () => void {
   let pre: number = Date.now();
 
-  return function () {
+  return function (...rest) {
     const context = this;
-    const args = arguments;
+
     const now = Date.now();
 
     if (now - pre >= wait) {
-      func.apply(context, args);
+      func.apply(context, rest);
       pre = Date.now();
     }
   };
 }
+
 export { debounce, throttle };
