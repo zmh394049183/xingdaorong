@@ -21,7 +21,7 @@ importers:
         version: 0.4.4(rollup@4.1.4)
       '@rollup/plugin-typescript':
         specifier: ^11.1.5
-        version: 11.1.5(rollup@4.1.4)(typescript@5.2.2)
+        version: 11.1.5(rollup@4.1.4)(tslib@2.6.2)(typescript@5.2.2)
       '@types/node':
         specifier: ^20.8.6
         version: 20.8.6
@@ -43,9 +43,14 @@ importers:
       rollup-plugin-dts:
         specifier: ^6.1.0
         version: 6.1.0(rollup@4.1.4)(typescript@5.2.2)
+      tslib:
+        specifier: ^2.6.2
+        version: 2.6.2
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
+
+  packages/antd: {}
 
   packages/time: {}
 
@@ -471,7 +476,7 @@ packages:
       terser: 5.22.0
     dev: true
 
-  /@rollup/plugin-typescript@11.1.5(rollup@4.1.4)(typescript@5.2.2):
+  /@rollup/plugin-typescript@11.1.5(rollup@4.1.4)(tslib@2.6.2)(typescript@5.2.2):
     resolution: {integrity: sha512-rnMHrGBB0IUEv69Q8/JGRD/n4/n6b3nfpufUu26axhUcboUzv/twfZU8fIBbTOphRAe0v8EyxzeDpKXqGHfyDA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -487,6 +492,7 @@ packages:
       '@rollup/pluginutils': 5.0.5(rollup@4.1.4)
       resolve: 1.22.8
       rollup: 4.1.4
+      tslib: 2.6.2
       typescript: 5.2.2
     dev: true
 
@@ -2709,6 +2715,10 @@ packages:
       typescript: '>=4.2.0'
     dependencies:
       typescript: 5.2.2
+    dev: true
+
+  /tslib@2.6.2:
+    resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
     dev: true
 
   /tty-table@4.2.2:

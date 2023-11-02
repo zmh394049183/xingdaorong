@@ -7,6 +7,7 @@ export function isYesterday(timestamp: number, now = new Date().getTime()) {
     date.getDate() === yesterday.getDate()
   );
 }
+
 export const formatTimeView = (
   timestamp: number,
   now = new Date().getTime(),
