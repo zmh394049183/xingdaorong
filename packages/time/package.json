@@ -1,6 +1,6 @@
 {
   "name": "@xingdaorong/time",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "type": "module",
   "main": "./dist/index.cjs",

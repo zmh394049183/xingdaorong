@@ -6,6 +6,7 @@
 
 - `@xingdaorong/utils`: 提供一系列通用的 JavaScript 工具函数和工具库。
 - `@xingdaorong/time`: 提供与时间相关的工具函数和类。
+- `@xingdaorong/antd`: antd 相关的工具函数和类。
 
 ## 安装
 
@@ -20,4 +21,5 @@ npm install -g pnpm
 ```bash
 pnpm add @xingdaorong/utils
 pnpm add @xingdaorong/time
+pnpm add @xingdaorong/antd
 ```
