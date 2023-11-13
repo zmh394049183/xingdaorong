@@ -14,7 +14,10 @@ function debounce<T extends (...args: any[]) => any>(
   };
 }
 
-function throttle(func: (...rest: any[]) => void, wait: number): () => void {
+function throttle<T>(
+  func: (...rest: T[]) => void,
+  wait: number,
+): (...rest: T[]) => void {
   let pre: number = Date.now();
 
   return function (...rest) {
