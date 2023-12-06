@@ -43,3 +43,5 @@ function output(npath: string) {
 }
 
 export default [...list.map((path) => output(path)).flat()] as any[];
+
+const a = 1;
